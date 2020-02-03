@@ -24,7 +24,6 @@
 }
 
 .title {
-  /* font-family: 'Major Mono Display', monospace; */
   font-family: 'Permanent Marker', cursive;
   font-size: 30px;
 }
@@ -40,7 +39,6 @@ a {
 
 .nav-items li {
   font-family: 'Major Mono Display', monospace;
-  /* font-family: 'Permanent Marker', cursive; */
   font-size: 20px;
   margin-left: 30px;
 }
@@ -134,7 +132,6 @@ td a {
 }
 
 h1 {
-  /* font-family: 'Major Mono Display', monospace; */
   font-family: 'Permanent Marker', cursive;
   font-size: 24px;
   margin-bottom: 0;
@@ -195,7 +192,7 @@ p {
 .img-caption p {
   color: #000000;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   opacity: 1;
   padding: 0 10px;
 }
