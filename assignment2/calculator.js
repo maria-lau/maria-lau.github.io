@@ -20,7 +20,7 @@ $(function () {
     });
 
     function backSpace() {
-        if(answer=="ERROR" || answer=="Infinity"){
+        if (answer == "ERROR" || answer == "Infinity") {
             allClear();
         }
         if (equation.length > 0) {
@@ -62,8 +62,55 @@ $(function () {
         }
     }
 
+    function needsMultiplySymbol() {
+        if (equation == "") {
+            return false;
+        }
+        let lastChar = equation.slice(-1);
+        if ("1234567890)".includes(lastChar)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function lastTerm() {
+        if (indexOfLastOperand() == 0) {
+            return equation;
+        } else {
+            return equation.substring(indexOfLastOperand() + 1);
+        }
+    }
+
+    function indexOfLastOperand() {
+        index = 0;
+        if (equation == "") {
+            return index;
+        }
+        if (equation.lastIndexOf("+") > index) {
+            index = equation.lastIndexOf("+");
+        }
+        if (equation.lastIndexOf("-") > index) {
+            index = equation.lastIndexOf("-");
+        }
+        if (equation.lastIndexOf("*") > index) {
+            index = equation.lastIndexOf("*");
+        }
+        if (equation.lastIndexOf("/") > index) {
+            index = equation.lastIndexOf("/");
+        }
+        if (equation.lastIndexOf("(") > index) {
+            index = equation.lastIndexOf("(");
+        }
+        if (equation.lastIndexOf(")") > index) {
+            index = equation.lastIndexOf(")");
+        }
+        return index;
+    }
+
     function useAnswer() {
-        if(answer=="ERROR"){
+        if (answer == "ERROR") {
             answer = empty_answer;
         }
         equation = answer;
@@ -76,10 +123,17 @@ $(function () {
         if (answer != empty_answer) {
             useAnswer();
         }
-        equation += "(";
+        if (needsMultiplySymbol()) {
+            equation += "*(";
+        } else {
+            equation += "(";
+        }
         updateEquation();
     });
     $('#close-bracket').click(() => {
+        if (equation.length == 0) {
+            return;
+        }
         if (!openBracketLast() && !operandLast()) {
             equation += ")";
             updateEquation();
@@ -130,7 +184,7 @@ $(function () {
         if (answer != empty_answer) {
             useAnswer();
         }
-        if(openBracketLast()){
+        if (openBracketLast()) {
             return;
         }
         if (!operandLast()) {
@@ -147,7 +201,7 @@ $(function () {
         if (answer != empty_answer) {
             useAnswer();
         }
-        if(openBracketLast()){
+        if (openBracketLast()) {
             return;
         }
         if (!operandLast()) {
@@ -164,7 +218,7 @@ $(function () {
         if (answer != empty_answer) {
             useAnswer();
         }
-        if(openBracketLast()){
+        if (openBracketLast()) {
             return;
         }
         if (!operandLast()) {
@@ -181,7 +235,7 @@ $(function () {
         if (answer != empty_answer) {
             useAnswer();
         }
-        if(openBracketLast()){
+        if (openBracketLast()) {
             return;
         }
         if (!operandLast()) {
@@ -196,7 +250,7 @@ $(function () {
     });
 
     $('#decimal').click(() => {
-        if (!equation.includes(".")) {
+        if (!lastTerm().includes(".")) {
             equation += ".";
             updateEquation();
         }

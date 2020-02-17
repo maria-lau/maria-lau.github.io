@@ -15,37 +15,37 @@
         <div class="calculator flex-column">
             <div class="display flex-column">
                 <input type="text" id="equation" disabled>
-                <input type="text" id="answer" disabled>
+                <input type="number" id="answer" disabled>
             </div>
             <div class="button-row flex-row">
-                <button id="open-bracket">(</button>
-                <button id="close-bracket">)</button>
-                <button id="clear-entry">CE</button>
-                <button id="all-clear">AC</button>
+                <button class="bracket" id="open-bracket">(</button>
+                <button class="bracket" id="close-bracket">)</button>
+                <button class="clear" id="clear-entry">CE</button>
+                <button class="clear" id="all-clear">AC</button>
             </div>
             <div class="button-row flex-row">
                 <button id="7">7</button>
                 <button id="8">8</button>
                 <button id="9">9</button>
-                <button id="divide">&divide;</button>
+                <button class="operand" id="divide">&divide;</button>
             </div>
             <div class="button-row flex-row">
                 <button id="4">4</button>
                 <button id="5">5</button>
                 <button id="6">6</button>
-                <button id="multiply">x</button>
+                <button class="operand" id="multiply">x</button>
             </div>
             <div class="button-row flex-row">
                 <button id="1">1</button>
                 <button id="2">2</button>
                 <button id="3">3</button>
-                <button id="subtract">-</button>
+                <button class="operand" id="subtract">-</button>
             </div>
             <div class="button-row flex-row">
                 <button id="0">0</button>
                 <button id="decimal">.</button>
                 <button id="evaluate">=</button>
-                <button id="add">+</button>
+                <button class="operand" id="add">+</button>
             </div>
         </div>
 </body>
