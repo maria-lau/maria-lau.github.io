@@ -7,6 +7,10 @@ let evaluated = false;
 $(function () {
     $('#answer').val(empty_answer);
 
+    function equationEmpty() {
+        return (equation.length == 0);
+    }
+
     function updateEquation() {
         $('#equation').val(equation);
     }
@@ -24,7 +28,7 @@ $(function () {
     });
 
     function backSpace() {
-        if (equation == "" || answer == "ERROR" || answer == "Infinity") {
+        if (equationEmpty() || answer == "ERROR" || answer == "Infinity") {
             allClear();
         }
         if (equation.length > 0) {
@@ -42,7 +46,7 @@ $(function () {
     }
 
     function operandLast() {
-        if (equation == "") {
+        if (equationEmpty()) {
             return false;
         }
         let lastChar = equation.slice(-1);
@@ -55,7 +59,7 @@ $(function () {
     }
 
     function openBracketLast() {
-        if (equation == "") {
+        if (equationEmpty()) {
             return false;
         }
         let lastChar = equation.slice(-1);
@@ -68,7 +72,7 @@ $(function () {
     }
 
     function needsMultiplySymbol() {
-        if (equation == "") {
+        if (equationEmpty()) {
             return false;
         }
         let lastChar = equation.slice(-1);
@@ -90,7 +94,7 @@ $(function () {
 
     function indexOfLastOperand() {
         index = 0;
-        if (equation == "") {
+        if (equationEmpty()) {
             return index;
         }
         if (equation.lastIndexOf("+") > index) {
@@ -265,10 +269,10 @@ $(function () {
         try {
             answer = eval(equation).toString();
             updateAnswer();
-            equation = ""
+            equation = empty_equation;
             evaluated = true;
         } catch (e) {
-            answer = "ERROR"
+            answer = "ERROR";
             updateAnswer();
         }
     });
