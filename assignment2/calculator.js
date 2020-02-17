@@ -11,6 +11,10 @@ $(function () {
         $('#equation').val(equation);
     }
 
+    function updateAnswer() {
+        $('#answer').val(answer);
+    }
+
     $('#all-clear').click(() => {
         allClear();
     });
@@ -20,7 +24,7 @@ $(function () {
     });
 
     function backSpace() {
-        if (answer == "ERROR" || answer == "Infinity") {
+        if (equation == "" || answer == "ERROR" || answer == "Infinity") {
             allClear();
         }
         if (equation.length > 0) {
@@ -33,7 +37,8 @@ $(function () {
         equation = empty_equation;
         evaluated = false;
         updateEquation();
-        $('#answer').val(empty_answer);
+        answer = empty_answer;
+        updateAnswer();
     }
 
     function operandLast() {
@@ -193,7 +198,7 @@ $(function () {
         }
         else {
             backSpace();
-            equation += "&#247;";
+            equation += "/";
             updateEquation();
         }
     });
@@ -210,7 +215,7 @@ $(function () {
         }
         else {
             backSpace();
-            equation += "x";
+            equation += "*";
             updateEquation();
         }
     });
@@ -259,12 +264,12 @@ $(function () {
     $('#evaluate').click(() => {
         try {
             answer = eval(equation).toString();
-            $('#answer').val(answer);
+            updateAnswer();
             equation = ""
             evaluated = true;
         } catch (e) {
             answer = "ERROR"
-            $('#answer').val(answer);
+            updateAnswer();
         }
     });
 });
