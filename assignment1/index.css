@@ -1,0 +1,198 @@
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0 80px;
+  height: 97.5vh;
+}
+
+.flex-container * {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.nav-bar {
+  height: 7.5vh;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-items {
+  justify-content: flex-end;
+}
+
+.nav-items li {
+  font-family: 'Major Mono Display', monospace;
+  font-size: 20px;
+  margin-left: 30px;
+}
+
+.nav-items li:hover {
+  font-size: 25px;
+}
+
+.content {
+  height: 90vh;
+  overflow-y: scroll;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.content-home {
+  margin: 0 -80px;
+  background-image: url(photos/MountScott.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 30px;
+  justify-content: space-between;
+}
+
+.content-places {
+  margin: 0 -80px;
+  background-image: url(photos/France.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 30px;
+}
+
+.content-activities {
+  margin: 0 -80px;
+  background-image: url(photos/NorthernLights.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 30px;
+}
+
+.content-eats {
+  margin: 0 -80px;
+  background-image: url(photos/Sunflowers.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 30px;
+}
+
+.about {
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 80px;
+  max-width: 30%;
+  padding: 0 20px;
+  background-color: #ffffffBA;
+  border-radius: 30px;
+}
+
+table {
+  display: table !important;
+}
+
+thead {
+  display: table-header-group !important;
+  font-family: 'Permanent Marker', cursive;
+}
+
+tbody {
+  display: table-row-group !important;
+}
+
+tr {
+  display: table-row !important;
+}
+
+th {
+  display: table-cell !important;
+}
+
+td {
+  display: table-cell !important;
+  font-family: 'Raleway', sans-serif;
+}
+
+td:nth-child(odd) {
+  text-align: right;
+}
+
+td a {
+  text-decoration: underline;
+}
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  text-align: left;
+}
+
+.bucket-list {
+  max-width: 45%;
+  max-height: 80%;
+  align-items: center;
+  overflow-y: scroll;
+  background-color: #ffffffAA;
+  border-radius: 30px;
+}
+
+.bucket-list h1 {
+  margin-bottom: 10px;
+}
+
+.bucket-list-items {
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.item {
+  width: 180px;
+  height: 200px;
+}
+
+.item img {
+  object-fit: cover;
+}
+
+.item img, .item .img-caption {
+  width: 180px;
+  height: 180px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.img-caption {
+  opacity: 0;
+  background-color: white;
+  margin-left: -180px;
+  align-items: flex-end;
+  text-align: left;
+}
+
+.img-caption:hover {
+  opacity: 0.8;
+}
+
+.img-caption p {
+  color: #000000;
+  font-weight: bold;
+  font-size: 16px;
+  opacity: 1;
+  padding: 0 10px;
+}
