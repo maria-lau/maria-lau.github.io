@@ -1,6 +1,15 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+
 .background {
-    background-color: #D3BDEC;
-    height: 100vh;
+    background-image: url(photos/WaterColours.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,20 +29,62 @@
 
 .content {
     background-color: white;
-    box-shadow:  5px 8px 20px 5px rgba(0,0,0,0.3);
-    min-height: 50vh;
-    min-width: 50vh;
+    justify-content: space-between;
+    box-shadow: 5px 8px 20px 5px rgba(0, 0, 0, 0.3);
+    max-height: 75vh;
+    max-width: 75vw;
     overflow-y: scroll;
 }
 
+.about {
+    margin-left: 50px;
+    justify-content: center;
+    min-width: 30%;
+    max-width: 50%;
+    text-align: left;
+}
+
+.portfolio {
+    margin: 50px;
+    justify-content: center;
+    min-width: 30%;
+    max-width: 50%;
+}
+
 h1 {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 24px;
+    color: #ABADFC;
+    font-family: 'Fredoka One', sans-serif;
+    font-size: 48px;
     margin-bottom: 0;
 }
 
 p {
     font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    text-align: left;
+    color: #5B6372;
+    font-size: 20px;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.assignment {
+    box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    margin: 10px;
+}
+
+.assignment1 {
+    background-color: #A0C0FF;
+}
+
+.assignment2 {
+    background-color: #D4DFF7;
+}
+
+.assignment3 {
+    background-color: #9BCBFF;
 }
