@@ -1,0 +1,180 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+h1 {
+    color: #0D0363;
+    font-family: 'Spartan', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    align-self: center;
+    padding: 8px 12px;
+    margin: 0;
+    align-self: flex-end;
+    flex: 1;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #5B6372;
+    font-size: 14px;
+    flex: 1;
+}
+
+ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.background {
+    background-image: url(../photos/space.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background * {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.content {
+    justify-content: space-between;
+    box-shadow: 5px 8px 20px 5px rgba(0, 0, 0, 0.5);
+    height: 90vh;
+    max-height: 90vh;
+    width: 90vw;
+}
+
+.chat-main {
+    flex: 1;
+    margin-bottom: 3px;
+    height: 80vh;
+}
+
+.users {
+    max-width: 350px;
+    flex: 1 1 auto;
+    margin-right: 3px;
+}
+
+.user-title {
+    background-color: white;
+    height: 50px;
+    margin-bottom: 3px;
+}
+
+.user-list {
+    background-color: white;
+    flex: 1;
+}
+
+.chat-log {
+    overflow: scroll;
+    background-color: white;
+    flex: 5 1 auto;
+    justify-content: flex-end;
+}
+
+.chat-log-record {
+    padding: 0 12px;
+    width: -webkit-fill-available;
+}
+
+.chat-log-record>p {
+    margin: 6px 0;
+}
+
+p.date {
+    width: 80px;
+    max-width: 100px;
+    font-size: 10px;
+    align-self: center;
+    flex: none;
+}
+
+.chat-log img.avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    margin-left: 6px;
+}
+
+.chat-log p.username {
+    font-size: 12px;
+}
+
+p.chat-log-message {
+    flex: 1;
+    align-self: center;
+}
+
+.chat-input {
+    background-color: white;
+    min-height: 50px;
+    height: 5vh;
+}
+
+form.message-form {
+    justify-content: space-between;
+    flex: 1;
+}
+
+.message {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    padding: 8px 12px;
+    flex: 1;
+}
+
+.message-submit {
+    padding-right: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    margin: 8px 12px;
+}
+
+img.avatar {
+    align-self: center;
+    margin-left: 12px;
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+}
+
+p.username, p.you {
+    padding: 8px 12px;
+    align-self: center;
+    font-weight: 700;
+    flex: none;
+}
+
+li>p.you {
+    color: #2E338E;
+    padding-left: 0px;
+    flex: 1;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: 5px auto #7762CB;
+}

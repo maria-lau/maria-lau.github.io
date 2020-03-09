@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="chat.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Spartan:700&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js"></script>
+</head>
+
+<body>
+    <div class="background">
+        <div class="content flex-column">
+            <div class="chat-main flex-row">
+                <div class="users flex-column">
+                    <div class="user-title">
+                        <h1>Online Users</h1>
+                    </div>
+                    <ul class="user-list flex-column"></ul>
+                </div>
+                <div class="chat-log flex-column"></div>
+            </div>
+            <div class="chat-input flex-row">
+                <img class="avatar" id="my-avatar" src="">
+                <p class="username" id="my-username">
+                </p>
+                <form class="message-form">
+                    <input class="message" type="text" placeholder="Type message here..." >
+                    <input class="message-submit" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "assignment3",
+  "version": "1.0.0",
+  "description": "Chat application for SENG 513 Assignment 3",
+  "main": "index.js",
+  "dependencies": {
+    "animal-avatars.js": "^0.0.2",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "\"node index.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "\"https://github.com/maria-lau/maria-lau.github.io\""
+  },
+  "author": "\"Maria Lau\"",
+  "license": "ISC"
+}
