@@ -175,6 +175,14 @@ input {
     border: none;
 }
 
+input[type="submit"]{
+    border: 1px solid #7762CB;
+}
+
 input:focus {
     outline: 5px auto #7762CB;
 }
+
+::placeholder {
+    font-size: 12px;
+  }

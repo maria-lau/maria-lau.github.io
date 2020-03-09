@@ -21,17 +21,19 @@ $(document).ready(function () {
         if (command != '') {
             if (command.command === "nick") {
                 socket.emit('usernameChange', command.commandValue);
-            } else if (command.command === "nickcolor") {
+            } else if(command.command === "list" && command.commandValue === "commands"){
+                alert('Commands:\n1. To change username, type `\\nick <new username>` \n2. To change font colour, type `\\nickcolor <hex color code>`');
+            }else if (command.command === "nickcolor") {
                 let newColour = command.commandValue;
-                if(newColour.length === 6){
+                if(newColour.length === 6 && isHexColourCode(newColour)){
                     newColour = "#" + newColour;
                     socket.emit('textColourChange', newColour);
                 }else{
-                    alert('Error, bad command: value of new colour should be a 6 character hex-colour code. E.g. "RRGGBB"')
+                    alert('Error, bad command:\nValue of new colour should be a 6 character hex-colour code.\nE.g. "\\nickcolor AA00FF"')
                 }
             }
             else {
-                alert('Error, bad command: Command \"\\' + command.command + '\" which does not exist.')
+                alert('Error, bad command:\nCommand \"\\' + command.command + '\" which does not exist.')
             }
             $('.message').val('');
             return false;
@@ -175,4 +177,9 @@ function getSlashCommand(message) {
     else {
         return '';
     }
+}
+
+function isHexColourCode(hexValue){
+    hexMatch = hexValue.match(/^[0-9A-F]{6}$/i);
+    return hexMatch === null? false : true;
 }
