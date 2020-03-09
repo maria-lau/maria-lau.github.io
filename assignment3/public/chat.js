@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    const socket = io();
+    let socket = io();
     let username = decodeURIComponent(getCookieValue('username'));
     const avatarUrl = decodeURIComponent(getCookieValue('avatarURL'));
     let userTextColour = decodeURIComponent(getCookieValue('userTextColour'));
@@ -93,6 +93,7 @@ $(document).ready(function () {
             }
         }
         $('.chat-log').html(messageHtml);
+        $(".chat-log").scrollTop($(".chat-log")[0].scrollHeight);
     });
 
     socket.on('newChatMessage', function (msg) {
@@ -116,7 +117,13 @@ $(document).ready(function () {
             messageHtml += msgString + '</p></div>';
         }
         $('.chat-log').append(messageHtml);
+        $(".chat-log").scrollTop($(".chat-log")[0].scrollHeight);
     });
+
+    socket.on('disconnect', () => {
+        // reconnect if it is accidentally disconnected
+        socket.open();
+      });
 
 });
 
