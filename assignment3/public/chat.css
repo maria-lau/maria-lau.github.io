@@ -87,7 +87,10 @@ ul {
     overflow: scroll;
     background-color: white;
     flex: 5 1 auto;
-    /* justify-content: flex-end; */
+}
+
+.nonscrollable-chat {
+    justify-content: flex-end;
 }
 
 .chat-log-record {

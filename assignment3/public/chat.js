@@ -21,14 +21,14 @@ $(document).ready(function () {
         if (command != '') {
             if (command.command === "nick") {
                 socket.emit('usernameChange', command.commandValue);
-            } else if(command.command === "list" && command.commandValue === "commands"){
+            } else if (command.command === "list" && command.commandValue === "commands") {
                 alert('Commands:\n1. To change username, type `\\nick <new username>` \n2. To change font colour, type `\\nickcolor <hex color code>`');
-            }else if (command.command === "nickcolor") {
+            } else if (command.command === "nickcolor") {
                 let newColour = command.commandValue;
-                if(newColour.length === 6 && isHexColourCode(newColour)){
+                if (newColour.length === 6 && isHexColourCode(newColour)) {
                     newColour = "#" + newColour;
                     socket.emit('textColourChange', newColour);
-                }else{
+                } else {
                     alert('Error, bad command:\nValue of new colour should be a 6 character hex-colour code.\nE.g. "\\nickcolor AA00FF"')
                 }
             }
@@ -95,7 +95,10 @@ $(document).ready(function () {
             }
         }
         $('.chat-log').html(messageHtml);
-        $(".chat-log").scrollTop($(".chat-log")[0].scrollHeight);
+        if ($(".chat-log-record")[0].offsetTop < 40) {
+            $(".chat-log").removeClass("nonscrollable-chat");
+            $(".chat-log").scrollTop($(".chat-log")[0].scrollHeight);
+        }
     });
 
     socket.on('newChatMessage', function (msg) {
@@ -119,13 +122,16 @@ $(document).ready(function () {
             messageHtml += msgString + '</p></div>';
         }
         $('.chat-log').append(messageHtml);
-        $(".chat-log").scrollTop($(".chat-log")[0].scrollHeight);
+        if ($(".chat-log-record")[0].offsetTop < 40) {
+            $(".chat-log").removeClass("nonscrollable-chat");
+            $(".chat-log").scrollTop($(".chat-log")[0].scrollHeight);
+        }
     });
 
     socket.on('disconnect', () => {
         // reconnect if it is accidentally disconnected
         socket.open();
-      });
+    });
 
 });
 
@@ -146,9 +152,9 @@ function prettifyDateString(dateString) {
     let amOrPm = hours < 12 ? 'AM' : 'PM';
     hours = (hours % 12) || 12;
     let minutes = dt.getMinutes().toString();
-    if(minutes.length == 1){
+    if (minutes.length == 1) {
         minutes = '0' + minutes;
-    } 
+    }
     let timezone = getTimeZoneAcronym(dateString.split('(')[1]);
 
     prettifiedString += day + "/" + month + "/" + year + " " + hours + ":" + minutes + amOrPm + " (" + timezone + ")"
@@ -179,7 +185,7 @@ function getSlashCommand(message) {
     }
 }
 
-function isHexColourCode(hexValue){
+function isHexColourCode(hexValue) {
     hexMatch = hexValue.match(/^[0-9A-F]{6}$/i);
-    return hexMatch === null? false : true;
+    return hexMatch === null ? false : true;
 }
