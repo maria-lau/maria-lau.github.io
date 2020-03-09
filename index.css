@@ -47,7 +47,6 @@ body, html {
 .portfolio {
     margin: 50px;
     justify-content: center;
-    min-width: 30%;
     max-width: 50%;
 }
 
@@ -71,10 +70,13 @@ a {
 
 .assignment {
     box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
-    height: 100%;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
+}
+
+.assignment p {
+    font-size: 16px;
 }
 
 .assignment1 {
