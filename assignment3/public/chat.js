@@ -16,7 +16,7 @@ $(document).ready(function () {
     $('form').submit(function (e) {
         e.preventDefault(); // prevents page reloading
         let message = $('.message').val();
-        message = message.replace('\\', '\\\\')
+        message = message.replace('\\', '\\\\');
         command = getSlashCommand(message);
         if (command != '') {
             if (command.command === "nick") {

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="connect_four.css">
+    <link rel="shortcut icon" href="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Spartan:700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+        integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
+    <script src="connect_four.js"></script>
+</head>
+
+<body>
+    <div id="background" class="background background-rosegold">
+        <div id="start-content-wrap" class="start-content-wrap-rosegold">
+            <div class="start-content flex-column">
+                <h1 class="rosegold">Welcome to Connect Four!</h1>
+                <button id="new-game-button" class="start-button start-button-rosegold">
+                    <p>Start a new game of Connect Four</p>
+                </button>
+                <div class="join-game flex-row">
+                    <input id="join-code-text" class="start-button start-button-rosegold" type=text placeholder="Enter join code...">
+                    <button id="join-game-button" class="start-button start-button-rosegold">
+                        <p>Join existing game</p>
+                    </button>
+                </div>
+                <button id="random-game-button" class="start-button start-button-rosegold">
+                    <p>Join a random game of Connect Four</p>
+                </button>
+            </div>
+        </div>
+        <div id="game-content-wrap" class="game-content-wrap-rosegold">
+            <div class="game-content flex-column">
+                <h1 class="rosegold">Welcome to Connect Four!</h1>
+                <div class="main-content flex-row">
+                    <div id="disabled" class="disabled-rosegold">
+                        <h1 id="disabled-title" class="rosegold"></h1>
+                        <p id="disabled-explanation">
+                            Waiting for opponent to join game.<br />
+                            Share your game code with your friend so that they can join the game!
+                        </p>
+                    </div>
+                    <div class="players flex-column">
+                        <h1 id="player-title" class="rosegold">Players</h1>
+                        <ul class="player-list flex-column"></ul>
+                        <div class="turn-indicator flex-column">
+                            <div id="slot-colour" class="slot slot-rosegold"></div>
+                            <h1 id="turn" class="rosegold"></h1>
+                        </div>
+                    </div>
+                    <div class="gameboard flex-column">
+                        <div class="track-cursor flex-row">
+                            <div class="arrow-container"><i id="arrow1" class="arrow"></i></div>
+                            <div class="arrow-container"><i id="arrow2" class="arrow"></i></div>
+                            <div class="arrow-container"><i id="arrow3" class="arrow"></i></div>
+                            <div class="arrow-container"><i id="arrow4" class="arrow"></i></div>
+                            <div class="arrow-container"><i id="arrow5" class="arrow"></i></div>
+                            <div class="arrow-container"><i id="arrow6" class="arrow"></i></div>
+                            <div class="arrow-container"><i id="arrow7" class="arrow"></i></div>
+                        </div>
+                        <div id="board" class="board board-rosegold flex-row">
+                            <div id="opponents-turn" class="opponents-turn-rosegold">
+                                <h1 id="opponents-title" class="rosegold">Waiting For Opponent's Move</h1>
+                            </div>
+                            <div id="col1" class="game-column game-column-rosegold flex-column">
+                                <div id="16" class="slot slot-rosegold"></div>
+                                <div id="15" class="slot slot-rosegold"></div>
+                                <div id="14" class="slot slot-rosegold"></div>
+                                <div id="13" class="slot slot-rosegold"></div>
+                                <div id="12" class="slot slot-rosegold"></div>
+                                <div id="11" class="slot slot-rosegold"></div>
+                            </div>
+                            <div id="col2" class="game-column game-column-rosegold flex-column">
+                                <div id="26" class="slot slot-rosegold"></div>
+                                <div id="25" class="slot slot-rosegold"></div>
+                                <div id="24" class="slot slot-rosegold"></div>
+                                <div id="23" class="slot slot-rosegold"></div>
+                                <div id="22" class="slot slot-rosegold"></div>
+                                <div id="21" class="slot slot-rosegold"></div>
+                            </div>
+                            <div id="col3" class="game-column game-column-rosegold flex-column">
+                                <div id="36" class="slot slot-rosegold"></div>
+                                <div id="35" class="slot slot-rosegold"></div>
+                                <div id="34" class="slot slot-rosegold"></div>
+                                <div id="33" class="slot slot-rosegold"></div>
+                                <div id="32" class="slot slot-rosegold"></div>
+                                <div id="31" class="slot slot-rosegold"></div>
+                            </div>
+                            <div id="col4" class="game-column game-column-rosegold flex-column">
+                                <div id="46" class="slot slot-rosegold"></div>
+                                <div id="45" class="slot slot-rosegold"></div>
+                                <div id="44" class="slot slot-rosegold"></div>
+                                <div id="43" class="slot slot-rosegold"></div>
+                                <div id="42" class="slot slot-rosegold"></div>
+                                <div id="41" class="slot slot-rosegold"></div>
+                            </div>
+                            <div id="col5" class="game-column game-column-rosegold flex-column">
+                                <div id="56" class="slot slot-rosegold"></div>
+                                <div id="55" class="slot slot-rosegold"></div>
+                                <div id="54" class="slot slot-rosegold"></div>
+                                <div id="53" class="slot slot-rosegold"></div>
+                                <div id="52" class="slot slot-rosegold"></div>
+                                <div id="51" class="slot slot-rosegold"></div>
+                            </div>
+                            <div id="col6" class="game-column game-column-rosegold flex-column">
+                                <div id="66" class="slot slot-rosegold"></div>
+                                <div id="65" class="slot slot-rosegold"></div>
+                                <div id="64" class="slot slot-rosegold"></div>
+                                <div id="63" class="slot slot-rosegold"></div>
+                                <div id="62" class="slot slot-rosegold"></div>
+                                <div id="61" class="slot slot-rosegold"></div>
+                            </div>
+                            <div id="col7" class="game-column game-column-rosegold flex-column">
+                                <div id="76" class="slot slot-rosegold"></div>
+                                <div id="75" class="slot slot-rosegold"></div>
+                                <div id="74" class="slot slot-rosegold"></div>
+                                <div id="73" class="slot slot-rosegold"></div>
+                                <div id="72" class="slot slot-rosegold"></div>
+                                <div id="71" class="slot slot-rosegold"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings flex-column">
+                        <button id="change-name-button" class="change-username">
+                            <p>Change Username</p>
+                        </button>
+                        <button id="change-theme-rosegold-button" class="rosegold">
+                            <p>Change to Rose-Gold Color Theme</p>
+                        </button>
+                        <button id="change-theme-aurora-button" class="aurora">
+                            <p>Change to Aurora Color Theme</p>
+                        </button>
+                        <button id="change-theme-ocean-button" class="ocean">
+                            <p>Change to Ocean Color Theme</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
